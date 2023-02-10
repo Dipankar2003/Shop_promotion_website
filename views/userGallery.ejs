@@ -3,7 +3,7 @@
   <%- include('./partials/head.ejs') %>
   <body>
     <section id="header">
-      <a href="#"><img src="img/logo.png" class="logo" alt="" /></a>
+      <a href="#"><img src="/img/logo.png" class="logo" alt="" /></a>
       <div>
         <ul id="navbar">
           <li><a href="/">Home</a></li>
@@ -24,7 +24,7 @@
       <div class="pro-container">
         <% data1.forEach((out)=>{ %>
         <div class="pro">
-          <img src="uploads/<%-out.Product_img%>" alt="" />
+          <img src="/uploads/<%-out.Product_img%>" alt="" />
           <div class="des">
             <span class="Product_name"><%=out.Product_name%></span>
             <h5 class="Product_Desc"><%=out.Product_Desc%></h5>
@@ -61,6 +61,6 @@
       }
     </script>
 
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
   </body>
 </html>

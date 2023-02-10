@@ -5,9 +5,13 @@ const Message = require("./../model/message_model");
 const { Client } = require("whatsapp-web.js");
 const qrcode = require("qrcode-terminal");
 const QRCode = require("qrcode");
+const Customer = require("./../model/customer");
+const DOB_number = require("./../model/messaging_number");
 const customerData = require("./../model/messaging_number");
 const mongoose = require("mongoose");
 const multer = require("multer");
+const jwt = require("jsonwebtoken");
+const path = require("path");
 const nodemailer = require("nodemailer");
 
 let post;
@@ -86,7 +90,7 @@ exports.back = async (req, res) => {
 };
 
 const storage = multer.diskStorage({
-  destination: "./../public/uploads",
+  destination: "./public/uploads",
   filename: async (req, file, cb) => {
     let newImagePath;
     newImagePath = Date.now() + path.extname(file.originalname);
@@ -148,7 +152,7 @@ exports.addbannerSave = async (req, res) => {
       .then((result) => {
         //REDIRECTING TO PRODUCT FORM PAGE
         //product();
-        res.redirect("/addbanner");
+        res.redirect("/login/Admin/addbanner");
       })
       .catch((err) => console.log(err));
   });
@@ -165,7 +169,7 @@ exports.addsliderSave = async (req, res) => {
       .then((result) => {
         //REDIRECTING TO PRODUCT FORM PAGE
         //product();
-        res.redirect("/addslider");
+        res.redirect("/login/Admin/addslider");
       })
       .catch((err) => console.log(err));
   });

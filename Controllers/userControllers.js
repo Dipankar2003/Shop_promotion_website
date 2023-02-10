@@ -1,6 +1,7 @@
 const Banner = require("./../model/banner_model");
 const Slider = require("./../model/slider_model");
 const Gallery = require("./../model/gallery_model");
+const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 
 let post;
@@ -77,22 +78,4 @@ exports.query = (req, res) => {
       }
     }
   );
-};
-
-exports.protect = async (req, res, next) => {
-  let token;
-
-  token = req.cookies.jwt;
-
-  if (!token) {
-    next();
-  } else {
-    const secret = "my-secret-string-used-in-formation-of-token";
-
-    jwt.verify(token, secret, (err, decoded) => {
-      if (err) {
-        res.redirect("/login/admin");
-      }
-    });
-  }
 };

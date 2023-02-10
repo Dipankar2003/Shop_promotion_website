@@ -4,7 +4,7 @@ const express = require("express");
 
 const Router = express.Router();
 
-Router.route("/").get(userControllers.homePage);
+Router.route("/").get(userControllers.protect, userControllers.homePage);
 Router.route("/Gallery").get(userControllers.gallery);
 Router.route("/contact_us")
   .get(userControllers.contact_us)

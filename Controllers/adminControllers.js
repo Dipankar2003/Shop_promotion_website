@@ -174,7 +174,7 @@ exports.addsliderSave = async (req, res) => {
 exports.gallerydelete = async (req, res) => {
   Gallery.findOneAndDelete({ _id: req.body.id }).then(() => {
     console.log("deleted gallery");
-    res.redirect("/gallery");
+    res.redirect("/login/admin/gallery");
   });
 };
 

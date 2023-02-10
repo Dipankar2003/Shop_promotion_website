@@ -78,3 +78,21 @@ exports.query = (req, res) => {
     }
   );
 };
+
+exports.protect = async (req, res, next) => {
+  let token;
+
+  token = req.cookies.jwt;
+
+  if (!token) {
+    next();
+  } else {
+    const secret = "my-secret-string-used-in-formation-of-token";
+
+    jwt.verify(token, secret, (err, decoded) => {
+      if (err) {
+        res.redirect("/login/admin");
+      }
+    });
+  }
+};
